@@ -161,8 +161,25 @@
 
         .cell-id { color: #aaa; font-size: 0.82rem; font-weight: 600; }
         .cell-name { font-weight: 600; color: #111; }
-        .cell-email a { color: #004a99; text-decoration: none; }
-        .cell-email a:hover { text-decoration: underline; }
+        .cell-email a {
+            color: #004a99;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .cell-email a:hover {
+            text-decoration: underline;
+            color: #002f6c;
+        }
+        .cell-email a::before {
+            content: '\f0e0';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
         .cell-message {
             max-width: 300px;
             color: #555;
@@ -319,7 +336,7 @@
                     <tr>
                         <td class="cell-id">#{{ q.id }}</td>
                         <td class="cell-name">{{ q.name }}</td>
-                        <td class="cell-email"><a href="mailto:{{ q.email }}">{{ q.email }}</a></td>
+                        <td class="cell-email"><a href="mailto:{{ q.email }}?subject=Re: {{ q.subject | urlencode }}">{{ q.email }}</a></td>
                         <td><span class="subject-badge">{{ q.subject | title }}</span></td>
                         <td class="cell-message">{{ q.message }}</td>
                         <td class="cell-date">
