@@ -25,7 +25,10 @@
             <div class="logo">
                 <div class="logo-text">SKYTOUCH<br><span style="font-size: 0.8rem; letter-spacing: 5px;">ENGINEERING</span></div>
             </div>
-            <nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="navMenu">
                 <ul>
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('about') }}">About Us</a></li>
@@ -33,8 +36,9 @@
                     <li><a href="{{ url_for('projects') }}">Projects</a></li>
                     <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
                 </ul>
+                <a href="#" class="cta-button mobile-cta">Get a Quote</a>
             </nav>
-            <a href="#" class="cta-button">Get a Quote</a>
+            <a href="#" class="cta-button desktop-cta">Get a Quote</a>
         </div>
     </header>
 
@@ -45,5 +49,20 @@
     <footer style="background: #002244; color: white; padding: 50px 5%; text-align: center;">
         <p>&copy; 2026 Skytouch Engineering. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            var menu = document.getElementById('navMenu');
+            var icon = this.querySelector('i');
+            menu.classList.toggle('active');
+            if (menu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>

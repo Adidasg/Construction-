@@ -210,6 +210,7 @@ nav ul li a:hover {
 /* Base Sections */
 .section {
     padding: 100px 5%;
+    transition: var(--transition);
 }
 
 .section-header {
@@ -226,6 +227,34 @@ nav ul li a:hover {
 .section-header h2 {
     font-size: 2.5rem;
     margin-top: 10px;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 20px 20px 0 var(--primary-color);
+    transition: var(--transition);
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-text {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: var(--light-text);
 }
 
 /* Cards Section */
@@ -254,6 +283,200 @@ nav ul li a:hover {
     margin-bottom: 20px;
 }
 
+/* Portfolio / Projects Grid */
+.portfolio-section {
+    padding-top: 140px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.portfolio-card {
+    padding: 0;
+    overflow: hidden;
+    height: 320px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.portfolio-card .overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.1) 100%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.portfolio-card:hover .overlay {
+    background: linear-gradient(to top, rgba(0, 42, 85, 0.92) 0%, rgba(0, 42, 85, 0.5) 60%, rgba(0, 42, 85, 0.15) 100%);
+}
+
+.portfolio-card .card-content {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    color: var(--white);
+    text-align: left;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.portfolio-card:hover .card-content {
+    transform: translateY(-5px);
+}
+
+.portfolio-card h4 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.portfolio-card p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Portfolio Card Background Gradients */
+.project-1 {
+    background: linear-gradient(135deg, #1d3557, #457b9d);
+}
+
+.project-2 {
+    background: linear-gradient(135deg, #2b2d42, #8d99ae);
+}
+
+.project-3 {
+    background: linear-gradient(135deg, #134e5e, #71b280);
+}
+
+.project-4 {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+}
+
+/* Contact Section & Form */
+.contact-section {
+    padding-top: 140px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    color: var(--text-color);
+    transition: var(--transition);
+    outline: none;
+    background: #fafafa;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(0, 74, 153, 0.15);
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-submit {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.05rem;
+    padding: 15px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 74, 153, 0.2);
+}
+
+/* Desktop defaults for navigation toggles */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.menu-toggle:hover {
+    background: rgba(0,0,0,0.05);
+    color: var(--primary-color);
+}
+
+.mobile-cta {
+    display: none;
+}
+
+.desktop-cta {
+    display: inline-block;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -270,14 +493,33 @@ nav ul li a:hover {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .stats {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
+        padding: 40px 5%;
     }
     .about {
         flex-direction: column;
+        gap: 45px;
+        text-align: center;
+    }
+    .about-image img {
+        box-shadow: 12px 12px 0 var(--primary-color);
+        max-width: 500px;
+        margin: 0 auto;
     }
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -285,32 +527,138 @@ nav ul li a:hover {
     .hero-content h1 {
         font-size: 3rem;
     }
+    .section {
+        padding: 70px 5%;
+    }
 }
 
 @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
+    .top-bar {
+        display: none; /* Hide top bar on mobile to save vertical space */
     }
-    nav ul {
+    
+    .nav-container {
+        height: var(--header-height);
+        padding: 0 5%;
+        position: relative;
+        flex-direction: row; /* Keep horizontal header layout */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger button */
+    }
+
+    .desktop-cta {
+        display: none; /* Hide desktop Get a Quote */
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: var(--white);
         flex-direction: column;
         align-items: center;
-        gap: 15px;
-        margin: 20px 0;
+        padding: 30px 20px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        border-top: 1px solid #eee;
+        z-index: 999;
     }
+
+    .nav-menu.active {
+        display: flex;
+        animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .nav-menu ul li a {
+        font-size: 1.1rem;
+        display: block;
+        padding: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .mobile-cta {
+        display: block;
+        width: 80%;
+        text-align: center;
+    }
+
     .stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 2x2 layout is cleaner than 1x4 */
+        gap: 25px;
     }
+
     .features-grid {
         grid-template-columns: 1fr;
     }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .hero {
+        padding: 0 6%;
+    }
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
-    .top-bar {
+    
+    .form-container {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .btn-group {
         flex-direction: column;
+        gap: 12px;
+    }
+    
+    .btn {
+        width: 100%;
         text-align: center;
-        gap: 10px;
+        padding: 12px 25px;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr; /* Stacks fully on very small screens */
+        gap: 20px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .section {
+        padding: 50px 5%;
+    }
+    
+    .portfolio-section, .contact-section {
+        padding-top: 110px;
+    }
+    
+    .portfolio-card {
+        height: 260px;
     }
 }

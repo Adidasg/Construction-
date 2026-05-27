@@ -36,16 +36,16 @@
 </section>
 
 <!-- About Section -->
-<section class="section about" style="display: flex; gap: 50px; align-items: center;">
-    <div class="about-image" style="flex: 1;">
-        <img src="{{ url_for('static', filename='images/about.png') }}" alt="About Us" style="width: 100%; border-radius: 10px; box-shadow: 20px 20px 0 var(--primary-color);">
+<section class="section about">
+    <div class="about-image">
+        <img src="{{ url_for('static', filename='images/about.png') }}" alt="About Us">
     </div>
-    <div class="about-content" style="flex: 1;">
+    <div class="about-content">
         <div class="section-header">
             <span>About Us</span>
             <h2>We Provide The Best<br>Engineering Solutions</h2>
         </div>
-        <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--light-text);">Skytouch Engineering is a leading engineering & construction company in Bangladesh. We provide top quality construction, design, consultation and project management services.</p>
+        <p class="about-text">Skytouch Engineering is a leading engineering & construction company in Bangladesh. We provide top quality construction, design, consultation and project management services.</p>
         <a href="{{ url_for('about') }}" class="btn btn-primary">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
 </section>
