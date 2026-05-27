@@ -161,6 +161,7 @@
 
         .cell-id { color: #aaa; font-size: 0.82rem; font-weight: 600; }
         .cell-name { font-weight: 600; color: #111; }
+        .cell-email { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .cell-email a {
             color: #004a99;
             text-decoration: none;
@@ -179,6 +180,32 @@
             font-weight: 900;
             font-size: 0.75rem;
             opacity: 0.6;
+        }
+        .copy-btn {
+            background: none;
+            border: 1.5px solid #d1d5db;
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+            font-family: 'Outfit', sans-serif;
+            white-space: nowrap;
+        }
+        .copy-btn:hover {
+            border-color: #004a99;
+            color: #004a99;
+            background: #eff6ff;
+        }
+        .copy-btn.copied {
+            border-color: #16a34a;
+            color: #16a34a;
+            background: #f0fdf4;
         }
         .cell-message {
             max-width: 300px;
@@ -336,7 +363,12 @@
                     <tr>
                         <td class="cell-id">#{{ q.id }}</td>
                         <td class="cell-name">{{ q.name }}</td>
-                        <td class="cell-email"><a href="mailto:{{ q.email }}?subject=Re: {{ q.subject | urlencode }}">{{ q.email }}</a></td>
+                        <td class="cell-email">
+                            <a href="mailto:{{ q.email }}?subject=Re: {{ q.subject | urlencode }}">{{ q.email }}</a>
+                            <button class="copy-btn" onclick="copyEmail(this, '{{ q.email }}')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </td>
                         <td><span class="subject-badge">{{ q.subject | title }}</span></td>
                         <td class="cell-message">{{ q.message }}</td>
                         <td class="cell-date">
@@ -380,5 +412,31 @@
         {% endif %}
     </div>
 </div>
+<script>
+    function copyEmail(btn, email) {
+        navigator.clipboard.writeText(email).then(() => {
+            btn.classList.add('copied');
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            }, 2000);
+        }).catch(() => {
+            // Fallback for older browsers
+            const el = document.createElement('textarea');
+            el.value = email;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            btn.classList.add('copied');
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+            }, 2000);
+        });
+    }
+</script>
 </body>
 </html>
