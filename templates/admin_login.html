@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Skytouch Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #002244 0%, #004a99 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 50px 45px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+        }
+        .login-logo {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .login-logo .icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #004a99, #002244);
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+        .login-logo .icon i { font-size: 1.6rem; color: #fff; }
+        .login-logo h1 { font-size: 1.4rem; color: #002244; font-weight: 700; }
+        .login-logo p { font-size: 0.85rem; color: #888; margin-top: 4px; }
+        .flash-msg {
+            padding: 11px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .flash-error   { background: #fde8e8; color: #9b1c1c; border: 1px solid #fbd5d5; }
+        .flash-success { background: #def7ec; color: #03543f; border: 1px solid #bcf0da; }
+        .form-group { margin-bottom: 20px; }
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #002244;
+            margin-bottom: 8px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            color: #333;
+            background: #fafafa;
+            transition: all 0.2s;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: #004a99;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(0,74,153,0.12);
+        }
+        .input-icon { position: relative; }
+        .input-icon i {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #004a99, #002244);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 8px;
+        }
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,74,153,0.3); }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .back-link a { color: #004a99; text-decoration: none; font-weight: 600; }
+        .back-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="login-logo">
+            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+            <h1>Admin Portal</h1>
+            <p>Skytouch Engineering — Staff Only</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-msg flash-{{ category }}">
+                        <i class="fas fa-{{ 'check-circle' if category == 'success' else 'exclamation-circle' }}"></i>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('admin_login') }}">
+            <div class="form-group">
+                <label class="form-label" for="username">Username</label>
+                <div class="input-icon">
+                    <input type="text" id="username" name="username" class="form-input"
+                           placeholder="Enter username" required autocomplete="username">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-icon">
+                    <input type="password" id="password" name="password" class="form-input"
+                           placeholder="Enter password" required autocomplete="current-password">
+                    <i class="fas fa-lock"></i>
+                </div>
+            </div>
+            <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i>&nbsp; Sign In
+            </button>
+        </form>
+        <div class="back-link">
+            <a href="{{ url_for('index') }}"><i class="fas fa-arrow-left"></i> Back to website</a>
+        </div>
+    </div>
+</body>
+</html>
