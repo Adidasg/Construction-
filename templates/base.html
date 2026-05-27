@@ -36,9 +36,9 @@
                     <li><a href="{{ url_for('projects') }}">Projects</a></li>
                     <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
                 </ul>
-                <a href="#" class="cta-button mobile-cta">Get a Quote</a>
+                <a href="{{ url_for('contact') }}" class="cta-button mobile-cta">Get a Quote</a>
             </nav>
-            <a href="#" class="cta-button desktop-cta">Get a Quote</a>
+            <a href="{{ url_for('contact') }}" class="cta-button desktop-cta">Get a Quote</a>
         </div>
     </header>
 
