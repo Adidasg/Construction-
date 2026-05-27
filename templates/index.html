@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <img src="{{ url_for('static', filename='images/hero_bg.png') }}" alt="Construction Site" class="hero-bg">
+    <div class="hero-content">
+        <span>Welcome to Skytouch Engineering</span>
+        <h1>We Build Your<br>Dream Structure</h1>
+        <p>We are a trusted engineering & construction company delivering quality services with professionalism and precision.</p>
+        <div class="btn-group">
+            <a href="{{ url_for('services') }}" class="btn btn-primary">Our Services <i class="fas fa-arrow-right"></i></a>
+            <a href="{{ url_for('contact') }}" class="btn btn-secondary">Contact Us <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats">
+    <div class="stat-item">
+        <h3 data-target="5">5+</h3>
+        <p>Years Experience</p>
+    </div>
+    <div class="stat-item">
+        <h3 data-target="100">100+</h3>
+        <p>Happy Clients</p>
+    </div>
+    <div class="stat-item">
+        <h3 data-target="150">150+</h3>
+        <p>Projects Completed</p>
+    </div>
+    <div class="stat-item">
+        <h3 data-target="50">50+</h3>
+        <p>Expert Engineers</p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section about" style="display: flex; gap: 50px; align-items: center;">
+    <div class="about-image" style="flex: 1;">
+        <img src="{{ url_for('static', filename='images/about.png') }}" alt="About Us" style="width: 100%; border-radius: 10px; box-shadow: 20px 20px 0 var(--primary-color);">
+    </div>
+    <div class="about-content" style="flex: 1;">
+        <div class="section-header">
+            <span>About Us</span>
+            <h2>We Provide The Best<br>Engineering Solutions</h2>
+        </div>
+        <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--light-text);">Skytouch Engineering is a leading engineering & construction company in Bangladesh. We provide top quality construction, design, consultation and project management services.</p>
+        <a href="{{ url_for('about') }}" class="btn btn-primary">Learn More <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- Features/Cards Section -->
+<section class="section" style="background: var(--bg-light);">
+    <div class="section-header" style="text-align: center;">
+        <span>Why Choose Us</span>
+        <h2>Our Core Values</h2>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <i class="fas fa-building"></i>
+            <h4>Quality Construction</h4>
+            <p>We ensure quality in every project with safety and industry-leading standards.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h4>On Time Delivery</h4>
+            <p>We value time and always deliver on time without compromising on quality.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-users"></i>
+            <h4>Expert Team</h4>
+            <p>Our team is highly skilled and experienced in handling complex projects.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
